@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.zerock.mapper.BoardMapper">
+	<!--  내용에 대해 id를 지정하고 id을 이용해 삽입을 지원함 -->
+	<sql id="criteria">
+     	<trim prefix="(" suffix=") AND"  prefixOverrides="OR">
+     		<foreach collection="typeArr" item="type">
+     			<trim prefix="OR">
+     				<choose>
+     					<when test='type=="T"'>
+     						title like '%'||#{keyword}||'%'
+     					</when>
+     					<when test='type=="C"'>
+     						content like '%'||#{keyword}||'%'
+     					</when>
+     					<when test='type=="W"'>
+     						writer like '%'||#{keyword}||'%'
+     					</when>
+     				</choose>
+     			</trim>
+     		</foreach>
+     	</trim>	
+	</sql>
+
+
+	<!-- id는 메소드 이름 ,resultType 운 결과를 ㅇ넣어줄객체 -->
+	<!--resultType select 문에만 필요-->
+	<select id="getList" resultType="org.zerock.domain.BoardVO">
+		select * from tbl_board order by bno desc
+	</select>
+	
+	<select id="getListWithPaging" resultType="org.zerock.domain.BoardVO">
+		<![CDATA[
+		select bno,title,writer,regdate,updatedate, good
+		
+		from (select /*+INDEX_DESC(tbl_board tbl_board_pk )*/
+    		  rownum rn ,bno,title,writer,regdate,updatedate ,good
+    		  from  TBL_board 
+    		  where 
+    	]]> 
+    	   		
+    		<include refid="criteria"></include>  
+    		 		
+    	<![CDATA[rownum<= #{pageNum} * #{amount} )
+				where rn> (#{pageNum}-1) * #{amount}
+		]]>
+		
+	</select> 
+	  
+
+	<select id="read" resultType="org.zerock.domain.BoardVO">
+		select * from tbl_board where bno=#{bno}
+	</select>
+	
+	<select id="Rank" resultType="org.zerock.domain.RankVO"> <!-- 돌려줄 객체는RankVO 인데  RankVO만있으면 인식을 못해 주소까지 함꼐 적어주어야함 -->
+		<![CDATA[select* from( select writer ,count(title) "count" from TBL_BOARD  Group by writer ORDER by "count" desc) where rownum<6]]>
+	</select>
+	
+	<select id="count" resultType="Long">
+		select count(*) from TBL_BOARD 
+		where
+			<include refid="criteria"></include>  				
+		bno >0			
+	</select>
+	
+	<select id="lastBoard" resultType="org.zerock.domain.BoardVO"> <!-- 돌료줄 객체  -->
+		<![CDATA[select*from (select * from TBL_BOARD order by UPDATEDATE desc) where rownum<6]]>	
+	</select>
+	
+	
+	<select id="timecount" resultType="org.zerock.domain.TimeVO"> <!-- 돌료줄 객체  -->
+		<![CDATA[select TO_char ( REGDATE ,'YYYY-MM-DD-hh24') RC ,count(*) count from TBL_BOARD Group by  TO_char ( REGDATE ,'YYYY-MM-DD-hh24') order by RC]]>	
+	</select>
+	
+	
+	
+	<insert id="insert">
+		insert into tbl_board(bno,title,content,writer)
+		values(seq_board.nextval,#{title},#{content},#{writer})
+	</insert>	
+	
+	<insert id="insertSelectKey">
+		<selectKey keyProperty="bno"  order="BEFORE" resultType="long">
+			select SEQ_BOARD.NEXTVAL from dual
+		</selectKey>
+	
+		insert into tbl_board(bno,title,content,writer)
+		values(#{bno},#{title},#{content},#{writer})
+	</insert>
+	
+	<update id="update">
+		update tbl_board set title=#{title}, content=#{content},
+		updatedate=sysdate where bno=#{bno}
+	</update>
+	
+	<update id="good">
+		update tbl_board set good=good+1 where bno=#{bno}
+	</update>
+	
+	
+	
+	
+	<delete id="delete">
+		delete from tbl_board where bno=#{bno}
+	</delete>
+
+</mapper>
+	

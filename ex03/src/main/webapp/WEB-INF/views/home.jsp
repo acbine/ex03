@@ -11,6 +11,8 @@
 	Hello world!  
 </h1>
 <a href="/board/list">게시판 바로가기</a>
+삭제오류 수정
+요소선택확인
 <P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>

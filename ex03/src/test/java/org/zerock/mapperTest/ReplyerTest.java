@@ -51,5 +51,7 @@ public class ReplyerTest {
 	public void Testoneserch() {
 		log.info( "댓글 상세보기 테스트용 코드 "+mapper.oneserch(3L));
 	}
+	
+
 
 }

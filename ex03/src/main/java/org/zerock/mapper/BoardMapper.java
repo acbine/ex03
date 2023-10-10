@@ -46,6 +46,7 @@ public  interface BoardMapper {
 	// 보너스 전체 글개수 (검색에도 대응) 가져오기
 	Long count(Criteria cri);
 	
+	
 	//보너스 (시간대별 글개수 통계 작성일 기준)  ex) 00:시 5개 01시  1개/ 23 11
 	List<TimeVO> timecount();
 	

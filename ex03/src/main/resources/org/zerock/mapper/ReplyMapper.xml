@@ -24,6 +24,7 @@
 	<select id="oneserch" resultType="org.zerock.domain.ReplyVO">
 	select * from TBL_REPLY where rno=#{rno} 
 	</select>
+	
 
 </mapper>
 	

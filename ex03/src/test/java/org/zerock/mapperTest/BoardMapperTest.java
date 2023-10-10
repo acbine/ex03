@@ -30,8 +30,8 @@ public class BoardMapperTest {
 	@Test
 	public void TestGetListWithPaging() {
 		Criteria cri = new Criteria();
-		cri.setType("TCW");
-		cri.setKeyword("알리");
+		//cri.setType("TCW");
+		//cri.setKeyword("알리");
 		boardMapper.getListWithPaging(cri).forEach(x->log.info("결과확인"+x));
 	}
 	
@@ -123,6 +123,8 @@ public class BoardMapperTest {
 	public void Testtimecount() {
 		log.info("시간대별 개숫는 "+boardMapper.timecount());
 	}
+	
+	
 	
 	
 

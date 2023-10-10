@@ -17,5 +17,8 @@ public interface ReplyService {
 	 int modify(ReplyVO vo);
 	//댓글 한게보기 
 	 ReplyVO get(Long rno); //get /replise/2
+	 // 댓글 갯수보기
+	
+	 
 	
 }	

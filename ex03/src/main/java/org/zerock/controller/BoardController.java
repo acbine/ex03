@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
+import org.springframework.cglib.reflect.MethodDelegate;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.PageDTO;
 import org.zerock.service.BoardService;
+import org.zerock.service.ReplyService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -29,12 +31,15 @@ import oracle.jdbc.proxy.annotation.Post;
 public class BoardController {
 	
 	BoardService service;
+	ReplyService Replyservice;
 	
 	@GetMapping("/list")
-	public void list(Model model,Criteria cri ,String SearchPageNum) { //데이터를 수집하기 위해서는  홈페이지에서 데이터를 보내고  list(데이터를 받는곳야함 )
+	public void list(Model model,Criteria cri ,String SearchPageNum ) { //데이터를 수집하기 위해서는  홈페이지에서 데이터를 보내고  list(데이터를 받는곳야함 )
 		log.info("list url 요청");
 		model.addAttribute("list",service.getList(cri)); // 글목록
 		model.addAttribute("pageMaker",new PageDTO(cri, service.totalcount(cri))); //페이지바 처리
+		//model.addAttribute("count",Replyservice.count(bno));
+		//log.info("---------수집된 bno------"+bno);
 		log.info("ㅋㅋㅋㅋㅋㅋ"+new PageDTO(cri, service.totalcount(cri)));
 		log.info("ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ"+new PageDTO(cri, 0));
 		log.info("String 타입ㅇ으"+SearchPageNum);

@@ -14,4 +14,5 @@ public class BoardVO {
 	private Date regdate;
 	private Date updatedate;
 	private int good; //오라클에있는데이터를 받아드릴댸 필요
+	private Long replycount;
 }

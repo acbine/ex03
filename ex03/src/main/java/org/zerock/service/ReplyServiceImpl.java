@@ -39,4 +39,7 @@ public class ReplyServiceImpl implements ReplyService {
 		return mapper.oneserch(rno);
 	}
 
+
+	
+
 }

@@ -40,7 +40,10 @@
                                 <c:forEach items="${list}" var="board">
                                 	<tr>
                                 		<td>${board.bno }</td>
-                                        <td><a href="/board/get?bno=${board.bno}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}"> <c:out value="${board.title }"></c:out></a> </td>
+                                        <td><a href="/board/get?bno=${board.bno}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}"> <c:out value="${board.title}"></c:out></a>
+                                        (<c:if test="${board.replycount!=null}"> ${board.replycount}</c:if>
+    									<c:if test="${board.replycount==null}">0 </c:if>)
+    									</td>
                                         <td>${board.writer }</td>
                                         <td class="center"><fmt:formatDate pattern="yyyy-MM-dd" value="${board.regdate }"/></td>
                                         <td class="center"><fmt:formatDate pattern="yyyy-MM-dd" value="${board.updatedate }"/></td> 

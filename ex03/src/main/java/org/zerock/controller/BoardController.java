@@ -31,15 +31,15 @@ import oracle.jdbc.proxy.annotation.Post;
 public class BoardController {
 	
 	BoardService service;
-	ReplyService Replyservice;
+	ReplyService replyService;
 	
 	@GetMapping("/list")
 	public void list(Model model,Criteria cri ,String SearchPageNum ) { //데이터를 수집하기 위해서는  홈페이지에서 데이터를 보내고  list(데이터를 받는곳야함 )
 		log.info("list url 요청");
 		model.addAttribute("list",service.getList(cri)); // 글목록
 		model.addAttribute("pageMaker",new PageDTO(cri, service.totalcount(cri))); //페이지바 처리
-		//model.addAttribute("count",Replyservice.count(bno));
-		//log.info("---------수집된 bno------"+bno);
+		model.addAttribute("bnoCount" , service.bnoCount());//댓글이 달린 글개수
+		model.addAttribute("replyMaxCountNumber",service.replyMaxCountNumber()); //최다 댓글 글번호
 		log.info("ㅋㅋㅋㅋㅋㅋ"+new PageDTO(cri, service.totalcount(cri)));
 		log.info("ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ"+new PageDTO(cri, 0));
 		log.info("String 타입ㅇ으"+SearchPageNum);

@@ -80,5 +80,15 @@ public class BoardServiceImpl implements BoardService {
 		
 	}
 
+	@Override
+	public Long bnoCount() {		
+		return mapper.bnoCount();
+	}
+
+	@Override
+	public Long replyMaxCountNumber() {
+		return mapper.replyMaxCountNumber();
+	}
+
 	
 }

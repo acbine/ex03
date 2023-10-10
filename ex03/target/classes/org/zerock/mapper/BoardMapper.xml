@@ -97,13 +97,20 @@
 	<update id="good">
 		update tbl_board set good=good+1 where bno=#{bno}
 	</update>
-	
-	
-	
-	
+		
 	<delete id="delete">
 		delete from tbl_board where bno=#{bno}
 	</delete>
+	
+	<select id="bnoCount" resultType="long">
+		select count(DISTINCT bno) from tbl_reply
+	</select>
+	
+	<select id="replyMaxCountNumber" resultType="long">
+		select bno
+		from(select bno,COUNT(*) rcount from TBL_REPLY group by bno)
+		where rcount = (select max(COUNT(*)) maxreply from TBL_REPLY group by bno)
+	</select>
 	
 
 

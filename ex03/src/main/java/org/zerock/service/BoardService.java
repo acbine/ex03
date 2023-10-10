@@ -25,6 +25,10 @@ public interface BoardService {
 	 void good(Long bno);
 	 
 	 String JAVATIME();
+	 
+	 Long bnoCount();
+	 
+	 Long replyMaxCountNumber();
 
 	 
 

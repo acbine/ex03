@@ -79,5 +79,15 @@ public class BoardsServiceTest {
 		log.info(service.JAVATIME());
 	}
 	
+	@Test
+	public void testbnoCount() {
+		log.info(service.bnoCount());
+	}
+	
+	@Test
+	public void testreplyMaxCountNumber() {
+		log.info(service.bnoCount());
+	}
+	
 
 }

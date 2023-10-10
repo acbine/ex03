@@ -54,5 +54,10 @@ public  interface BoardMapper {
 	
 	//게시글 검색(뒤에)
 	
+	//댓글이 달려있는 글개수
+	Long bnoCount();
+	
+	Long replyMaxCountNumber();
+	
 
 }

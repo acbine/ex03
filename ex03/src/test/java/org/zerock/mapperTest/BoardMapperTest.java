@@ -124,6 +124,16 @@ public class BoardMapperTest {
 		log.info("시간대별 개숫는 "+boardMapper.timecount());
 	}
 	
+	@Test
+	public void Testre() {
+		log.info(boardMapper.bnoCount());
+	}
+	
+	@Test
+	public void testreplyMaxCountNumber() {
+		log.info(boardMapper.replyMaxCountNumber());
+	}
+	
 	
 	
 	

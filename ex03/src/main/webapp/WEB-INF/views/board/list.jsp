@@ -21,8 +21,8 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            게시글 목록 보기( <a href="register">게시글쓰기 </a>)  현재글개수 ${count}  <div>최초접속시간${time}</div>
-                        </div>
+                            게시글 목록 보기( <a href="register">게시글쓰기 </a>)  현재글개수 ${count}  <div>최초접속시간${time}</div> <div>댓글달린 게시글 수:${bnoCount}</div>   <div>가장많은 댓글이달린 글번호:${replyMaxCountNumber}</div>                     </div>
+                       
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">

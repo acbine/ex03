@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.zerock.domain.ReplyVO;
+import org.zerock.service.BoardService;
 import org.zerock.service.ReplyService;
 import org.zerock.service.ReplyServiceImpl;
 
@@ -76,4 +77,6 @@ public class ReplyController {
 		return new ResponseEntity<ReplyVO>(service.get(rno),HttpStatus.OK);		
 		
 	}
+	
+	
 }

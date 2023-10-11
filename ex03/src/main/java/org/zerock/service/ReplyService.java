@@ -18,7 +18,11 @@ public interface ReplyService {
 	//댓글 한게보기 
 	 ReplyVO get(Long rno); //get /replise/2
 	 // 댓글 갯수보기
-	
+	 
+	//6.오늘의 리플개수
+	 List<ReplyVO> todaylist();
+	//7.리플 총개수
+	 int repltcount();
 	 
 	
 }	

@@ -155,6 +155,15 @@ public class BoardController {
 		
 		
 	}
+	@GetMapping("/newSearch")
+	public void newSearch() {
+		log.info("주소확인 board/newSearch");
+	}
+	
+	@GetMapping("/newReply")
+	public void newReply() {
+		log.info("주소확인 board/newReply");
+	}
 	
 
 }

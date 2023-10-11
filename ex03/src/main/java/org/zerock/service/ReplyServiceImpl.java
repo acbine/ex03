@@ -39,6 +39,16 @@ public class ReplyServiceImpl implements ReplyService {
 		return mapper.oneserch(rno);
 	}
 
+	@Override
+	public List<ReplyVO> todaylist() {	
+		return mapper.todaylist();
+	}
+
+	@Override
+	public int repltcount() {
+		return mapper.repltcount();
+	}
+
 
 	
 

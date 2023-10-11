@@ -21,7 +21,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            게시글 목록 보기( <a href="register">게시글쓰기 </a>)  현재글개수 ${count}  <div>최초접속시간${time}</div> <div>댓글달린 게시글 수:${bnoCount}</div>   <div>가장많은 댓글이달린 글번호:${replyMaxCountNumber}</div>                     </div>
+                            게시글 목록 보기( <a href="register">게시글쓰기 </a>)  현재글개수 ${count}  <div>최초접속시간${time}</div> <div>댓글달린 게시글 수:<span id="replybnocount"></span></div>   <div>가장많은 댓글이달린 글번호::<span id="replyMaxcountNumber"></span></div>                     </div>
                        
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -196,6 +196,33 @@
 	  
 	    	
 	    
+   </script>
+   
+   <script>
+   //1. ajax 통해서가져오기
+   var replybnocount=10;
+     $.ajax({
+	   url:"/myapi/replybnocount",
+	   type:"get",
+	   success:function(data){
+			//2. 가져온 데이터 화면에 출력
+			$("#replybnocount").text(data);
+		}
+   }); 
+   
+   </script>
+   
+   <script>
+   var replyMaxcountNumber=99999
+   $.ajax({
+	   url:"/myapi/bestbno",
+	   type:"put",
+	   success:function(data){
+			//2. 가져온 데이터 화면에 출력
+			$("#replyMaxcountNumber").text(data);
+		}
+     });
+   
    </script>
    
   

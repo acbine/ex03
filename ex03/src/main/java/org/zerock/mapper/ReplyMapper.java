@@ -15,4 +15,8 @@ public interface ReplyMapper {
 	int delete(Long rno);
 	//5. 개인 댓글 하난 보여주기윈한것
 	ReplyVO oneserch(Long rno);
+	//6.오늘의 리플개수
+	List<ReplyVO> todaylist();
+	//7.리플 총개수
+	int repltcount();
 }

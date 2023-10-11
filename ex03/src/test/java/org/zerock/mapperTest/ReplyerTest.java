@@ -52,6 +52,16 @@ public class ReplyerTest {
 		log.info( "댓글 상세보기 테스트용 코드 "+mapper.oneserch(3L));
 	}
 	
+	@Test
+	public void testtodaylist() {
+		mapper.todaylist().forEach(x->log.info("총 댓글내용 댓글내용확인"+x));
+	}
+	
+	@Test
+	public void testrepltcount() {
+		log.info(mapper.repltcount());
+	}
+	
 
 
 }

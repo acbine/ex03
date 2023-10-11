@@ -25,6 +25,14 @@
 	select * from TBL_REPLY where rno=#{rno} 
 	</select>
 	
+	<select id="todaylist" resultType="org.zerock.domain.ReplyVO">
+	select * from TBL_REPLY where REPLYDATE>TO_CHAR('20231011') order by UPDATEDATE desc
+	</select>
+	
+	<select id="repltcount" resultType="_int">
+	select count(*) from TBL_REPLY where REPLYDATE>TO_CHAR('20231011')
+	</select>
+	
 
 </mapper>
 	
